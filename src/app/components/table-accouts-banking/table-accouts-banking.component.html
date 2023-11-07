@@ -1,4 +1,4 @@
-<nz-table class="custom-table" #basicTable [nzData]="listOfData">
+<nz-table class="custom-table" #basicTable [nzData]="filteredData">
     <thead>
       <tr>
         <th>#</th>
@@ -14,8 +14,8 @@
         <td>{{ data.id }}</td>
         <td>{{ data.bankName }}</td>
         <td>{{ data.accountNumber }}</td>
-        <td>{{ data.status }}</td>
-        <td>{{ data.statusFmis }}</td>
+        <td>{{ data.status === 1 ? 'Hoạt Động' : 'Không Hoạt Động' }}</td>
+        <td>{{ data.statusFmis === 1 ? 'Live' : 'Sandbox' }}</td>
         <td class="btn-action">
             <a><span nz-icon nzType="edit" nzTheme="outline"></span></a>
             <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>

@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { log } from 'console';
 import { NzTableQueryParams } from 'ng-zorro-antd';
-interface AccountBanking {
-  id: string;
-  bankName: string;
-  accountNumber: string;
-  status: number;
-  statusFmis: number
-}
+
 
 @Component({
   selector: 'app-table-accouts-banking',
@@ -14,89 +9,30 @@ interface AccountBanking {
   styleUrls: ['./table-accouts-banking.component.scss']
 })
 export class TableAccoutsBankingComponent implements OnInit {
+  @Input() listOfData: any[] = [];
+  @Input() searchForm: any[] = [];
+  filteredData: any[] = [];
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-  }
+    // Ban đầu, hiển thị toàn bộ dữ liệu
+    this.filteredData = this.listOfData;
 
-  listOfData: AccountBanking[] = [
-    {
-      id: '1',
-      bankName: 'BIDV',
-      accountNumber: '1298390213398',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '2',
-      bankName: 'MBank',
-      accountNumber: '89217391273312',
-      status: 0,
-      statusFmis: 1
-    },
-
-    {
-      id: '3',
-      bankName: 'TechcomBank',
-      accountNumber: '3921347219048',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '4',
-      bankName: 'AngryBank',
-      accountNumber: '231289312734',
-      status: 0,
-      statusFmis: 0
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
-    }
     
-
-  ];
-
+  }
+ 
+  onSearch(searchData: any): void {
+    // this.filteredData = this.listOfData.filter(item => {
+    //   return (
+    //     (searchData.bankcode === 'Tất Cả' || item.bankName === searchData.selectedBank) &&
+    //     (searchData.selectedStatus === 'Tất Cả' || item.status.toString() === searchData.selectedStatus) &&
+    //     (searchData.selectedFMIS === 'Tất Cả' || item.statusFmis.toString() === searchData.selectedFMIS) &&
+    //     (item.accountNumber.includes(searchData.selectedAccNumber))
+    //   );
+    // });
+    console.log(this.filteredData);
+  }
 }
 
 

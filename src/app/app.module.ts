@@ -14,7 +14,6 @@ import { FormAccountsBankingComponent } from './components/form-accounts-banking
 import { SharedModule } from 'src/shared/shared.module';
 import { TableAccoutsBankingComponent } from './components/table-accouts-banking/table-accouts-banking.component';
 import { ModalAddComponent } from './components/modal-add/modal-add.component';
-import { ButtonFormAccountComponent } from './components/button-form-account/button-form-account.component';
 registerLocaleData(vi);
 
 @NgModule({
@@ -24,7 +23,7 @@ registerLocaleData(vi);
     FormAccountsBankingComponent,
     TableAccoutsBankingComponent,
     ModalAddComponent,
-    ButtonFormAccountComponent,
+
 
     
 

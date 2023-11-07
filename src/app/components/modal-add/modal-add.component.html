@@ -1,36 +1,35 @@
 <div class="wrapper-add-account">
     <h1>THÊM MỚI TÀI KHOẢN</h1>
-<form class="custom-form" [formGroup]="validateForm">
-    <div class="form-group">
-        <label for="bank">Ngân Hàng</label>
-        <nz-select id="bank" [(ngModel)]="selectedBank" [nzPlaceHolder]="'Select a bank'" formControlName="bankCode">
-            <nz-option *ngFor="let bank of bankOptions" [nzLabel]="bank" [nzValue]="bank"></nz-option>
-        </nz-select>
-    </div>
+    <form class="custom-form" [formGroup]="validateForm">
+        <div class="form-group">
+            <label for="bank">Ngân Hàng</label>
+            <nz-select id="bank" formControlName="bankCode">
+                <nz-option *ngFor="let bank of bankOptions" [nzLabel]="bank" [nzValue]="bank"></nz-option>
+            </nz-select>
+        </div>
 
-    <div class="form-group">
-        <label >Số Tài Khoản</label>
-        <input id="accountNumber" [(ngModel)]="selectedAccNumber" nz-input placeholder="Account Number" formControlName="accountNumber">
-    </div>
+        <div class="form-group">
+            <label for="accountNumber">Số Tài Khoản</label>
+            <input id="accountNumber" nz-input placeholder="Account Number" formControlName="accountNumber">
+        </div>
 
-    <div class="form-group">
-        <label for="status">Trạng Thái</label>
-        <nz-select id="status" [(ngModel)]="selectedStatus" [nzPlaceHolder]="'Select a status'" formControlName="status">
-            <nz-option *ngFor="let status of statusOptions" [nzLabel]="status" [nzValue]="status"></nz-option>
-        </nz-select>
-    </div>
+        <div class="form-group">
+            <label for="status">Trạng Thái</label>
+            <nz-select id="status" formControlName="status">
+                <nz-option *ngFor="let status of statusOptions" [nzLabel]="status" [nzValue]="status"></nz-option>
+            </nz-select>
+        </div>
 
-    <div class="form-group">
-        <label for="fmis">Trạng Thái FMIS</label>
-        <nz-select id="fmis" [(ngModel)]="selectedFMIS" [nzPlaceHolder]="'Select an FMIS'" formControlName="fmisStatus">
-            <nz-option *ngFor="let fmis of fmisOptions" [nzLabel]="fmis" [nzValue]="fmis"></nz-option>
-        </nz-select>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="fmis">Trạng Thái FMIS</label>
+            <nz-select id="fmis" formControlName="fmisStatus">
+                <nz-option *ngFor="let fmis of fmisOptions" [nzLabel]="fmis" [nzValue]="fmis"></nz-option>
+            </nz-select>
+        </div>
+    </form>
 
-<div>
-    <button class="btn-save" nz-button nzType="primary">Lưu</button>
-    <button class="btn-cancel" nz-button nzType="default">Huỷ bỏ</button>
+    <div>
+        <button class="btn-save" nz-button nzType="primary">Lưu</button>
+        <button class="btn-cancel" nz-button nzType="default">Huỷ bỏ</button>
+    </div>
 </div>
-</div>
-

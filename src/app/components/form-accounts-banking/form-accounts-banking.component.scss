@@ -5,6 +5,7 @@
     .form-group {
       flex: 1;
       margin: 10px;
+      
     }
   
     label {
@@ -21,5 +22,24 @@
     input{
         border: 1px #777 solid;
     }
+
+    
   }
+    
+  .button-action{
+    margin-bottom: 16px;
+    button{
+        margin-right: 10px; 
+        color: #fff;
+        border-radius: 6px;
+        
+    } 
+    .btn-green{
+      background-color: green;
+    }
+
+    .btn-purple{
+      background-color: purple;
+    }
+}
   
