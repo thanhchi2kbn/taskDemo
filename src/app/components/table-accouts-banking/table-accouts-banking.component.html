@@ -1,0 +1,26 @@
+<nz-table class="custom-table" #basicTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Ngân Hàng</th>
+        <th>Số Tài Khoản</th>
+        <th>Trạng Thái</th>
+        <th>Trạng Thái FMIS</th>
+        <th>Chức Năng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.id }}</td>
+        <td>{{ data.bankName }}</td>
+        <td>{{ data.accountNumber }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.statusFmis }}</td>
+        <td class="btn-action">
+            <a><span nz-icon nzType="edit" nzTheme="outline"></span></a>
+            <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+            <a><span nz-icon nzType="reload" nzTheme="outline"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

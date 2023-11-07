@@ -1,0 +1,25 @@
+.custom-form {
+    display: flex;
+    flex-wrap: wrap;
+  
+    .form-group {
+      flex: 1;
+      margin: 10px;
+    }
+  
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    nz-select{
+        width: 100%;
+        border: 1px #777 solid;
+    }
+
+    input{
+        border: 1px #777 solid;
+    }
+  }
+  

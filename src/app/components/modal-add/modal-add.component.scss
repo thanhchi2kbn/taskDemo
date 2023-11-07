@@ -1,0 +1,52 @@
+
+.wrapper-add-account{
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: auto auto;
+    padding: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .custom-form {
+        display: flex;
+        flex-wrap: wrap;
+      
+
+        .form-group {
+          width: 45%;
+          margin: 10px;
+        }
+      
+        label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+    
+        nz-select{
+            width: 100%;
+            border: 1px #777 solid;
+            border-radius: 4px;
+        }
+    
+        input{
+            border: 1px #777 solid;
+            border-radius: 4px;
+        }
+      }
+}
+
+button{
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 0 20px;
+    color: #000;
+    border-radius: 6px;
+}
+
+.btn-save{
+    color: #fff;
+}
+
+
