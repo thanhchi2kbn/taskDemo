@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { log } from 'console';
+import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
 @Component({
   selector: 'app-form-accounts-banking',
@@ -11,11 +13,11 @@ export class FormAccountsBankingComponent implements OnInit {
 
   @Output() searchClicked: EventEmitter<any> = new EventEmitter<any>();
 
-  bankOptions = ['Tất Cả', 'BIDV', 'MBank', 'ViettinBank', 'VietcomBank', 'AngryBank', 'TechcomBank'];
-  statusOptions = ['Tất Cả', 'Hoạt Động', 'Không Hoạt Động'];
-  fmisOptions = ['Tất Cả', 'Live', 'Sandbox'];
+  bankOptions = ['Tất Cả', 'AGR', 'BIDV', 'EIB', 'HDB', 'IVB', 'LPB', 'MB', 'MSB', 'SCB', 'SEA', 'SHB', 'STB', 'TCB', 'TPB', 'VCB', 'VIB', 'VPB', 'VTB'];
+  statusOptions = ['Tất Cả','Hoạt động', 'Không hoạt động'];
+  fmisOptions = ['Tất Cả','Live', 'Sandbox'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private filteredDataService: FilteredDataService) {
     this.validateForm = this.fb.group({
       bankCode: ['Tất Cả', [Validators.required]],
       accountNumber: [''],
@@ -24,10 +26,14 @@ export class FormAccountsBankingComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
- public onSearchClicked(){    
-    const formData = this.validateForm.getRawValue();    
-    this.searchClicked.emit( formData);
+  }
+
+ onSearchClicked(){    
+    const formData = this.validateForm.getRawValue();
+    console.log(formData);   
+    let searchData = this.filteredDataService.filterDataByFields(formData);
+    console.log(searchData);
   }
 }

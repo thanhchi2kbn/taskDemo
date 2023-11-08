@@ -10,12 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.id }}</td>
-        <td>{{ data.bankName }}</td>
+      <tr *ngFor="let data of basicTable.data let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ data.bankCode }}</td>
         <td>{{ data.accountNumber }}</td>
-        <td>{{ data.status === 1 ? 'Hoạt Động' : 'Không Hoạt Động' }}</td>
-        <td>{{ data.statusFmis === 1 ? 'Live' : 'Sandbox' }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.fmisStatus }}</td>
         <td class="btn-action">
             <a><span nz-icon nzType="edit" nzTheme="outline"></span></a>
             <a (click)="deleteItem(data)"><span nz-icon nzType="delete" nzTheme="outline"></span></a>

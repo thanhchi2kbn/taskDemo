@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/data.serviecs';
+import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
 export function accountNumberValidators(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -26,7 +27,7 @@ export function accountNumberValidators(): ValidatorFn {
 export class ModalAddComponent implements OnInit {
   validateForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService) {
+  constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService, private filteredDataService: FilteredDataService) {
     this.validateForm = this.fb.group({
       bankCode: [this.bankOptions[0], [Validators.required]],
       accountNumber: [null, [Validators.required, accountNumberValidators()]],
@@ -46,7 +47,7 @@ export class ModalAddComponent implements OnInit {
     if (this.validateForm.valid) {
       const formData = this.validateForm.value;
       console.log("Dữ liệu được thêm:", formData);
-      this.accountService.addAccount(formData);
+      this.filteredDataService.addDataToFilteredData(formData)
       this.router.navigate(['/account-setting']);
     } else {
       const accountNumberControl = this.validateForm.get('accountNumber');

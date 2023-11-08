@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, AfterViewInit, AfterContentInit } from '@angular/core';
 import { NzTableQueryParams } from 'ng-zorro-antd';
+import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
 
 @Component({
@@ -8,24 +9,21 @@ import { NzTableQueryParams } from 'ng-zorro-antd';
   styleUrls: ['./table-accouts-banking.component.scss']
 })
 export class TableAccoutsBankingComponent implements OnInit {
-  @Input() listOfData: any[] = [];
   @Input() searchData: any[] = [];
   @Input() newAccounts: any[] = [];
   
   
   filteredData: any[] = [];
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.filteredData = this.listOfData; 
-    
+  constructor(private filteredDataService: FilteredDataService) {
     
   }
 
-
-  ngOnChanges(): void{
-    console.log(this.newAccounts ,"in table cpn");
+  ngOnInit(): void {
+    // this.filteredData = this.listOfData; 
+    let getData = this.filteredDataService.getFilteredData();
+    this.filteredData = getData; 
+    console.log(this.filteredData, "lan dau tien");
   }
 
   deleteItem(item: any){
@@ -34,9 +32,9 @@ export class TableAccoutsBankingComponent implements OnInit {
       const eleDel = this.filteredData.splice(index, 1);
       this.filteredData = this.filteredData.filter((e) => eleDel[0].id !== e.id)
     }
-  
-    
   }
+
+
 }
 
 
