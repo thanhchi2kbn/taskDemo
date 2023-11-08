@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { log } from 'console';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { NzTableQueryParams } from 'ng-zorro-antd';
 
 
@@ -10,29 +9,36 @@ import { NzTableQueryParams } from 'ng-zorro-antd';
 })
 export class TableAccoutsBankingComponent implements OnInit {
   @Input() listOfData: any[] = [];
-  @Input() searchForm: any[] = [];
+  @Input() searchData: any[] = [];
+  @Input() newAccounts: any[] = [];
+  
+  
   filteredData: any[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    // Ban đầu, hiển thị toàn bộ dữ liệu
-    this.filteredData = this.listOfData;
-
+    this.filteredData = this.listOfData; 
+    
     
   }
- 
-  onSearch(searchData: any): void {
-    // this.filteredData = this.listOfData.filter(item => {
-    //   return (
-    //     (searchData.bankcode === 'Tất Cả' || item.bankName === searchData.selectedBank) &&
-    //     (searchData.selectedStatus === 'Tất Cả' || item.status.toString() === searchData.selectedStatus) &&
-    //     (searchData.selectedFMIS === 'Tất Cả' || item.statusFmis.toString() === searchData.selectedFMIS) &&
-    //     (item.accountNumber.includes(searchData.selectedAccNumber))
-    //   );
-    // });
-    console.log(this.filteredData);
+
+
+  ngOnChanges(): void{
+    console.log(this.newAccounts ,"in table cpn");
+  }
+
+  deleteItem(item: any){
+    const index = this.filteredData.indexOf(item);
+    if (index !== -1) {
+      const eleDel = this.filteredData.splice(index, 1);
+      this.filteredData = this.filteredData.filter((e) => eleDel[0].id !== e.id)
+    }
+  
+    
   }
 }
+
+
 
 

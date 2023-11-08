@@ -1,6 +1,6 @@
 <div class="wrapper-add-account">
     <h1>THÊM MỚI TÀI KHOẢN</h1>
-    <form class="custom-form" [formGroup]="validateForm">
+    <form class="custom-form" [formGroup]="validateForm" (ngSubmit)="onSave()">
         <div class="form-group">
             <label for="bank">Ngân Hàng</label>
             <nz-select id="bank" formControlName="bankCode">
@@ -29,7 +29,7 @@
     </form>
 
     <div>
-        <button class="btn-save" nz-button nzType="primary">Lưu</button>
-        <button class="btn-cancel" nz-button nzType="default">Huỷ bỏ</button>
+        <button  type="submit"  (click)="onSave()" class="btn-save" nz-button nzType="primary">Lưu</button>
+        <button [routerLink]="['/account-setting/']" routerLinkActive="router-link-active"  class="btn-cancel" nz-button nzType="default">Huỷ bỏ</button>
     </div>
 </div>

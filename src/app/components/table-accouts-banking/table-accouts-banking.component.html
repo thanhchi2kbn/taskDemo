@@ -18,7 +18,7 @@
         <td>{{ data.statusFmis === 1 ? 'Live' : 'Sandbox' }}</td>
         <td class="btn-action">
             <a><span nz-icon nzType="edit" nzTheme="outline"></span></a>
-            <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+            <a (click)="deleteItem(data)"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
             <a><span nz-icon nzType="reload" nzTheme="outline"></span></a>
         </td>
       </tr>

@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class DataService {
-  originalData: any[] = []; // Dữ liệu gốc
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountService {
+  private account: any = null;
 
-  // Hàm này cho phép bạn cập nhật dữ liệu gốc từ bất kỳ thành phần nào
-  updateOriginalData(data: any[]) {
-    this.originalData = data;
+  addAccount(account: any) {
+    this.account = account;
+    
+  }
+
+  getAccount() {
+    return this.account;
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/services/data.serviecs';
 interface AccountBanking {
   id: string;
   bankName: string;
@@ -13,10 +14,11 @@ interface AccountBanking {
 })
 export class SettingAccountsBankingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
+  newAccounts: any[] = [];
 
   ngOnInit(): void {
-    // Load your original data into 'originalData' here
+    this.newAccounts = this.accountService.getAccount();
   }
 
   listOfData: AccountBanking[] = [
@@ -30,7 +32,7 @@ export class SettingAccountsBankingComponent implements OnInit {
 
     {
       id: '2',
-      bankName: 'MBank',
+      bankName: 'MB',
       accountNumber: '89217391273312',
       status: 0,
       statusFmis: 1
@@ -38,7 +40,7 @@ export class SettingAccountsBankingComponent implements OnInit {
 
     {
       id: '3',
-      bankName: 'TechcomBank',
+      bankName: 'TCB',
       accountNumber: '3921347219048',
       status: 1,
       statusFmis: 1
@@ -46,7 +48,7 @@ export class SettingAccountsBankingComponent implements OnInit {
 
     {
       id: '4',
-      bankName: 'AngryBank',
+      bankName: 'MSB',
       accountNumber: '231289312734',
       status: 0,
       statusFmis: 0
@@ -54,44 +56,43 @@ export class SettingAccountsBankingComponent implements OnInit {
 
     {
       id: '5',
-      bankName: 'VietinBank',
+      bankName: 'VTB',
       accountNumber: '1293812093804',
       status: 1,
       statusFmis: 1
     },
 
     {
-      id: '5',
-      bankName: 'VietinBank',
+      id: '6',
+      bankName: 'VTB',
       accountNumber: '1293812093804',
       status: 1,
       statusFmis: 1
     },
 
     {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
+      id: '7',
+      bankName: 'TCB',
+      accountNumber: '129381203804',
+      status: 1,
+      statusFmis: 0
+    },
+
+    {
+      id: '8',
+      bankName: 'HDB',
+      accountNumber: '129382093804',
       status: 1,
       statusFmis: 1
     },
 
     {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
+      id: '9',
+      bankName: 'AGR',
+      accountNumber: '129381209384',
       status: 1,
-      statusFmis: 1
-    },
-
-    {
-      id: '5',
-      bankName: 'VietinBank',
-      accountNumber: '1293812093804',
-      status: 1,
-      statusFmis: 1
+      statusFmis: 0
     }
-    
 
   ];
 
@@ -99,7 +100,5 @@ export class SettingAccountsBankingComponent implements OnInit {
 
   onSearchDataReceived(data: any) {
     this.searchData = data; // Lưu dữ liệu tìm kiếm từ sự kiện
-   console.log(this.searchData);
-   
   }
 }

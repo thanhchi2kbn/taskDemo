@@ -3,6 +3,6 @@
     <div class="fillter-accounts">
     <Strong style="font-size: 18px;">Bộ lọc </Strong>
     <app-form-accounts-banking  (searchClicked)="onSearchDataReceived($event)" ></app-form-accounts-banking>
-    <app-table-accouts-banking [searchForm]="searchData"  [listOfData]="listOfData"></app-table-accouts-banking> <br><br>
+    <app-table-accouts-banking [newAccounts]="newAccounts"  [searchData]="searchData"  [listOfData]="listOfData"></app-table-accouts-banking> <br><br>
     </div>
 </div>

@@ -14,6 +14,8 @@ import { FormAccountsBankingComponent } from './components/form-accounts-banking
 import { SharedModule } from 'src/shared/shared.module';
 import { TableAccoutsBankingComponent } from './components/table-accouts-banking/table-accouts-banking.component';
 import { ModalAddComponent } from './components/modal-add/modal-add.component';
+import { AccountService } from './services/data.serviecs';
+
 registerLocaleData(vi);
 
 @NgModule({
@@ -39,7 +41,7 @@ registerLocaleData(vi);
     NzTreeSelectModule,
     SharedModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: vi_VN }],
+  providers: [{ provide: NZ_I18N, useValue: vi_VN },AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
