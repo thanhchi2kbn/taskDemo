@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AccountService {
-  private account: any = null;
+  private account: any[] = [];
 
   addAccount(account: any) {
     this.account = account;

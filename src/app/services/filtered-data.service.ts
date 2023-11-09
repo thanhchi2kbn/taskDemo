@@ -78,13 +78,16 @@ export class FilteredDataService {
   addDataToFilteredData(newData: AccountBanking) {
     this.filteredData.push(newData);
   }
-
   filterDataByFields(formData: any) {
     let searchData = this.filteredData;
   
     // Lọc dữ liệu dựa trên từng trường một nếu trường không rỗng
     if (formData.bankCode && formData.bankCode !== 'Tất Cả') {
       searchData = searchData.filter((item) => item.bankCode === formData.bankCode);
+    }
+  
+    if (formData.accountNumber) {
+      searchData = searchData.filter((item) => item.accountNumber.includes(formData.accountNumber));
     }
   
     if (formData.status && formData.status !== 'Tất Cả') {
@@ -95,9 +98,9 @@ export class FilteredDataService {
       searchData = searchData.filter((item) => item.fmisStatus === formData.fmisStatus);
     }
   
-    searchData=Object.assign([],searchData);
-    // console.log(searchData);
+
     return searchData;
   }
+  
 }
 

@@ -23,7 +23,6 @@ export class TableAccoutsBankingComponent implements OnInit {
     // this.filteredData = this.listOfData; 
     let getData = this.filteredDataService.getFilteredData();
     this.filteredData = getData; 
-    console.log(this.filteredData, "lan dau tien");
   }
 
   deleteItem(item: any){

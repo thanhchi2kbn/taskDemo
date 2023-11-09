@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { log } from 'console';
+import { AccountService } from 'src/app/services/data.serviecs';
+
 import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class FormAccountsBankingComponent implements OnInit {
   statusOptions = ['Tất Cả','Hoạt động', 'Không hoạt động'];
   fmisOptions = ['Tất Cả','Live', 'Sandbox'];
 
-  constructor(private fb: FormBuilder,private filteredDataService: FilteredDataService) {
+  constructor(private fb: FormBuilder,private filteredDataService: FilteredDataService,private AccountService: AccountService) {
     this.validateForm = this.fb.group({
       bankCode: ['Tất Cả', [Validators.required]],
       accountNumber: [''],
@@ -31,9 +32,9 @@ export class FormAccountsBankingComponent implements OnInit {
   }
 
  onSearchClicked(){    
-    const formData = this.validateForm.getRawValue();
-    console.log(formData);   
+    const formData = this.validateForm.getRawValue();   
     let searchData = this.filteredDataService.filterDataByFields(formData);
     console.log(searchData);
+    this.AccountService.addAccount(searchData)
   }
 }
