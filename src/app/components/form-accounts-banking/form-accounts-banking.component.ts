@@ -12,7 +12,7 @@ import { FilteredDataService } from 'src/app/services/filtered-data.service';
 export class FormAccountsBankingComponent implements OnInit {
   validateForm: FormGroup;
 
-  @Output() searchClicked: EventEmitter<any> = new EventEmitter<any>();
+
 
   bankOptions = ['Tất Cả', 'AGR', 'BIDV', 'EIB', 'HDB', 'IVB', 'LPB', 'MB', 'MSB', 'SCB', 'SEA', 'SHB', 'STB', 'TCB', 'TPB', 'VCB', 'VIB', 'VPB', 'VTB'];
   statusOptions = ['Tất Cả','Hoạt động', 'Không hoạt động'];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/data.serviecs';
 
 @Component({
@@ -10,18 +10,17 @@ export class SettingAccountsBankingComponent implements OnInit {
 
   listData=[];
 
-  constructor(private accountService: AccountService, ) { }
+  constructor(private accountService: AccountService ) { }
   newAccounts: any[] = [];
 
   ngOnInit(): void {
-    this.newAccounts = this.accountService.getAccount();
+    
   }
 
 
 
-  searchData: any; // Khai báo biến để lưu dữ liệu tìm kiếm
 
-  onSearchDataReceived(data: any) {
-    this.searchData = data; // Lưu dữ liệu tìm kiếm từ sự kiện
-  }
+
+
+
 }

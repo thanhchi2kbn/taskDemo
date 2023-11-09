@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnChanges, AfterViewInit, AfterContentInit } from '@angular/core';
+import { AccountService } from 'src/app/services/data.serviecs';
+import { Component, Input, OnInit, OnChanges, AfterViewInit, AfterContentInit, DoCheck, AfterContentChecked } from '@angular/core';
 import { NzTableQueryParams } from 'ng-zorro-antd';
 import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
@@ -8,19 +9,25 @@ import { FilteredDataService } from 'src/app/services/filtered-data.service';
   templateUrl: './table-accouts-banking.component.html',
   styleUrls: ['./table-accouts-banking.component.scss']
 })
-export class TableAccoutsBankingComponent implements OnInit {
+export class TableAccoutsBankingComponent implements OnInit, AfterContentChecked {
   @Input() searchData: any[] = [];
   @Input() newAccounts: any[] = [];
   
   
   filteredData: any[] = [];
-
-  constructor(private filteredDataService: FilteredDataService) {
+  searchResult: any[] = [];
+  constructor(private filteredDataService: FilteredDataService,private accountService: AccountService) {
     
   }
 
+  ngAfterContentChecked(): void {
+    this.searchResult =  this.accountService.getAccount();
+    if(this.searchResult){
+      this.filteredData = this.searchResult
+    }
+  }
+
   ngOnInit(): void {
-    // this.filteredData = this.listOfData; 
     let getData = this.filteredDataService.getFilteredData();
     this.filteredData = getData; 
   }
