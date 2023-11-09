@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/data.serviecs';
-
+import * as XLSX from 'xlsx';
 import { FilteredDataService } from 'src/app/services/filtered-data.service';
 
 @Component({
@@ -31,10 +31,24 @@ export class FormAccountsBankingComponent implements OnInit {
 
   }
 
- onSearchClicked(){    
+  onSearchClicked(){    
     const formData = this.validateForm.getRawValue();   
     let searchData = this.filteredDataService.filterDataByFields(formData);
-    console.log(searchData);
+    // console.log(searchData);
     this.AccountService.addAccount(searchData)
+  }
+
+  exportToExcel(): void {
+    let exportData = this.AccountService.getAccount();
+    console.log("xuat file ne",exportData);
+    
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(exportData);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'exported-data.xlsx');
   }
 }

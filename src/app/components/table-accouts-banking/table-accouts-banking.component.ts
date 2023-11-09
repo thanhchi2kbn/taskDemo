@@ -10,10 +10,7 @@ import { FilteredDataService } from 'src/app/services/filtered-data.service';
   styleUrls: ['./table-accouts-banking.component.scss']
 })
 export class TableAccoutsBankingComponent implements OnInit, AfterContentChecked {
-  @Input() searchData: any[] = [];
-  @Input() newAccounts: any[] = [];
-  
-  
+
   filteredData: any[] = [];
   searchResult: any[] = [];
   constructor(private filteredDataService: FilteredDataService,private accountService: AccountService) {

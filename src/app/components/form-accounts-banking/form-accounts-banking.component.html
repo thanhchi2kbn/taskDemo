@@ -28,6 +28,6 @@
 
 <div class="button-action">
     <button class="btn-green" nz-button nzType="default" (click)="onSearchClicked()">Tìm kiếm</button>
-    <button class="btn-purple" nz-button nzType="default">Xuất Excel</button>
+    <button class="btn-purple" nz-button nzType="default" (click)="exportToExcel()">Xuất Excel</button>
     <button [routerLink]="['/account-setting/add-modal']" routerLinkActive="router-link-active" class="btn-green" nz-button nzType="default">Thêm mới</button>
 </div>

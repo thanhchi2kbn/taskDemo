@@ -7,20 +7,9 @@ import { AccountService } from 'src/app/services/data.serviecs';
   styleUrls: ['./setting-accounts-banking.component.scss']
 })
 export class SettingAccountsBankingComponent implements OnInit {
-
-  listData=[];
-
-  constructor(private accountService: AccountService ) { }
-  newAccounts: any[] = [];
-
+  constructor() { }
   ngOnInit(): void {
     
   }
-
-
-
-
-
-
 
 }
